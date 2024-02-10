@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  
+}
+
+body {
+  background-image: url("https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");  
+  /* background-color: #0f0e0e; */
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button,
+input {
+  border: none;
+  outline: none;
+}
+
+/****************
+      FORM
+*****************/
+.signup {
+  background-color: white;
+  width: 100%;
+  max-width: 500px;
+  padding: 50px 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50px;
+  border-radius: 20px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    height: 550px;
+}
+
+h2 {
+  text-align: center;
+  color: rgb(12, 12, 14);;
+}
+h3 {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: lighter;
+
+  margin-bottom: 40px;
+}
+
+h3 span {
+  text-decoration: underline;
+  cursor: pointer;
+  color: rgb(12, 12, 14);;
+}
+
+/*  Field */
+.signup__field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.signup__field:before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 0px;
+  height: 2px;
+  background: rgb(12, 12, 14);;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.4s ease;
+}
+
+.signup__field:hover:before {
+  width: 100%;
+}
+
+/*  Input */
+.signup__input {
+  width: 100%;
+  height: 100%;
+  font-size: 1.2rem;
+  padding: 10px 2px 0;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+/*  Label */
+.signup__label {
+  color: #bdbdbd;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 2px;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.signup__input:focus + .signup__label,
+.signup__input:valid + .signup__label {
+  top: 0;
+  font-size: 1rem;
+  background-color: white;
+}
+
+/*  Button */
+button {
+  background: rgb(12, 12, 14);;
+  color: white;
+  padding: 12px 0;
+  font-size: 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #3071d2;
+}
+@media (max-width: 768px) {
+  /* styles for devices with a max width of 768px (e.g. iPad) */
+  .signup {
+    max-width: 90%;
+    padding: 30px;
+    height: auto;
+  }
+  
+  /* adjust font size for smaller screens */
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  /* adjust input field height and label font size */
+  .signup__input {
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .signup__label {
+    font-size: 1rem;
+  }
+  
+  /* adjust button padding and font size */
+  button {
+    padding: 10px 0;
+    font-size: 1rem;
+  }
+}
+
+
+    </style>
+</head>
+
+<body>
+    
+    <form class="signup" onsubmit="return false" autocomplete="off" id="form">
+        <h2>Создать аккаунт</h2>
+        <a href="./login.html">
+        <h3>У вас уже есть учетная запись? <span style="color: red;">Log in</span></h3>
+      </a>
+      
+        <div class="signup__field">
+          <input class="signup__input" type="text" name="name" id="username"  />
+          <label class="signup__label" for="username">Username</label>
+        </div>
+      
+        <div class="signup__field">
+          <input class="signup__input" type="text" name="email" id="email"  />
+          <label class="signup__label" for="email">Email</label>
+        </div>
+      
+        <div class="signup__field">
+          <input class="signup__input" type="password" name="password" id="password"  />
+          <label class="signup__label" for="password">Пароль</label>
+        </div>
+      
+        <button id="btn">Войти</button>
+        <br>
+        <button onclick="onGoogle()">Продолжайте работать с Google</button>
+        <br>
+        <button onclick="onGithub()">Продолжайте работать с github</button>
+      </form>
+</body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+    let url = "https://nice-gold-cuttlefish-fez.cyclic.app"
+    let btn = document.getElementById("btn")
+    let form = document.getElementById("form")
+    btn.addEventListener("click", (e) => {
+        // e.preventDefault();
+        let obj = {
+            name: form.name.value,
+            email: form.email.value,
+            password: form.password.value
+        }
+        fetch(`${url}/user/signup`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(obj)
+        }).then((res)=>{
+            return res.json()
+        }).then ((res) =>{
+            console.log("yes",res)
+            if(res.err){
+                // alert("user already registered")
+                Swal.fire(
+                '',
+                'Already Have an account PLEASE LOGIN',
+                'question'
+              )
+            }else{
+                window.location.href = "./login.html"
+            }
+            
+        }).catch((error)=>{
+            console.log(error);
+        })
+
+    })
+
+
+    function onGoogle() {
+       window.location.href = `${url}/user/auth/google`
+    }
+
+    function onGithub() {
+        window.location.href = `${url}/user/auth/github`
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="./style/about.css">
+</head>
+<body>
+    <div id="nav">
+        <div class="logo">
+        <div class="logoimg">
+           
+           <a href="index.html"><img src="./images/mirror mate.png" alt=""></a>
+         </div>
+    </div>
+    <div class="navele">
+       <h5><a class="navtxt" href="./about.html"><b>О нас</b></a></h5>
+       <h5><a class="navtxt" href="./contact.html"><b>Связаться с нами</b></a></h5>
+       <h5><a class="navtxt" href="./help.html"><b>Помочь</b></a></h5>
+       
+       
+    </div>
+    <div class="bar">
+        <div id="butt">
+            <button class="login"><a href="./signup login Frontend/login.html"> <b>Регистрация </b> </a> </button>
+            <button class="signup"><a href="./signup login Frontend/signup.html"> <b> Войти </b></a> </button>
+        </div>
+        </div>
+    </div>
+   
+    <!-- nav complete here -->
+    <div id="slideshow">
+    </div>
+    <!-- slideshow end here -->
+    <div id="misson">
+        <div class="left_div"><h1>НАША МИССИЯ</h1>
+            Наше приложение для совместного использования экрана разработано для того, чтобы помочь людям более эффективно сотрудничать, независимо от того, где они находятся в мире. Позволяя пользователям делиться своим экраном с другими, мы упрощаем совместную работу над проектами, устранение неполадок и представление информации.
+            Наша миссия - упростить процесс предоставления общего доступа к вашему экрану другим пользователям. Проводите ли вы презентацию, демонстрируете продукт или работаете над проектом с другими пользователями, наше приложение позволяет легко предоставлять общий доступ к вашему экрану в режиме реального времени. 
+            По сути, мы считаем, что сотрудничество является ключом к успеху. Вот почему мы создали наше приложение для совместного использования экрана, которое позволяет пользователям работать вместе более плавно и эффективно. Предоставляя общий доступ к своему экрану, вы можете быть уверены, что все находятся на одной странице и работают над достижением общей цели. </div>
+        <div>
+            <img src="https://imgv3.fotor.com/images/blog-cover-image/How-to-change-background-on-Zoom.jpg">
+        </div>
+    </div>
+    <!-- mission part  -->
+    <div class="theend">
+        <div class="theendcard">
+            <div class="lastcard">
+           
+            </div>
+            <div class="lastcard1">
+    
+             <img src="https://www.dollargeneral.com/content/experience-fragments/dollargeneral/en/global-footer/master/_jcr_content/root/globalfooter/app-images/image.coreimg.100.300.png/1661990967164/app-store.png" alt="">
+             <img src="https://www.dollargeneral.com/content/experience-fragments/dollargeneral/en/global-footer/master/_jcr_content/root/globalfooter/app-images/image_205323551.coreimg.100.300.png/1661990917826/google.png" alt="">
+             <p><b>Конфиденциальность | Условия</b> </p>
+             <p id="par"><b>© Авторское право 2024. Все права защищены.</b></p>
+            </div>
+            <p class="foot1">Если вы используете программу для чтения с экрана и у вас возникли проблемы с использованием этого веб-сайта, пожалуйста, позвоните <br> 375 29 111 1111</p>
+        </div>
+    </div>
+    </div>
+
+    
+</body>
+<script>
+    var Images = [
+    
+    "https://c1.wallpaperflare.com/preview/71/961/288/5ad69dfc0373a.jpg",
+    "https://d33wubrfki0l68.cloudfront.net/c8b8fc51e6cb9733a94950dabb974173bdc70ee2/bbf07/assets/img/covers/hellobackgrounds-example-01.webp"
+   
+  ]
+  let kavita=document.getElementById("slideshow")
+  
+  let i = 0;
+  
+  setInterval(function () {
+      Images.forEach((element,index)=>{
+          if(i===index){
+      let myImg=document.createElement("img")
+      myImg.setAttribute("src",element)
+      kavita.innerHTML=null
+  kavita.append(myImg)
+          }
+  });
+      
+     i++
+     
+   if(i>=Images.length){
+      i=0
+     }
+  }, 3000);
+</script>
+</html>
